@@ -98,7 +98,7 @@
                 </table>
               </div>
               <div class="card-footer">
-                <button class="btn btn-primary btn-block">Proceed to Checkout</button>
+                <button class="btn btn-primary btn-block" @click="onBuyNow" >BUY NOW</button>
               </div>
             </div>
           </div>
@@ -137,6 +137,10 @@ export default {
       if (quantity > 0) {
         this.updateCartItemQuantity({ productId: id, quantity });
       }
+    },
+    onBuyNow() {
+      // 在这里添加购买逻辑，例如添加到购物车或立即购买
+      this.$router.push({ name: 'payment' });
     }
   }
 }
