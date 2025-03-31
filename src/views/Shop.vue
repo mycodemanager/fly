@@ -8,25 +8,6 @@
           <div class="results-count">
             Showing 1-{{ products.length }} of {{ products.length }} results
           </div>
-
-          <div class="shop-controls d-flex align-items-center">
-            <div class="mr-3">
-              Show:
-              <select class="form-control form-control-sm d-inline-block ml-2" style="width: auto;">
-                <option value="6">6</option>
-                <option value="12" selected>12</option>
-                <option value="24">24</option>
-                <option value="36">36</option>
-              </select>
-            </div>
-
-            <div class="view-options">
-              <button class="btn btn-sm btn-outline-secondary mr-1"><i class="fas fa-th"></i></button>
-              <button class="btn btn-sm btn-outline-secondary mr-1"><i class="fas fa-th-large"></i></button>
-              <button class="btn btn-sm btn-outline-secondary mr-1"><i class="fas fa-th-list"></i></button>
-              <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-list"></i></button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -41,20 +22,6 @@
             <ProductCard :product="product" />
           </div>
         </div>
-
-        <nav class="mt-5">
-          <ul class="pagination justify-content-center">
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">3</a>
-            </li>
-          </ul>
-        </nav>
       </div>
     </div>
   </div>
