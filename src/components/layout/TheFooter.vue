@@ -6,16 +6,9 @@
         <div class="col-md-4 mb-4 mb-md-0">
           <div class="footer-contact">
             <h4 class="footer-title">Got questions? Call us 24/7!</h4>
-            <p class="contact-phone">
-              <i class="fas fa-phone-alt mr-2"></i>+92 320 9972624
-            </p>
             <p class="contact-email">
-              <i class="fas fa-envelope mr-2"></i>inspireinnosmc@gmail.com
+              <i class="fas fa-envelope mr-2"></i>gizmoshopper@gmail.com
             </p>
-            <div class="payment-methods">
-              <img src="@/assets/img/easypaisa.png" alt="EasyPaisa">
-              <img src="@/assets/img/jazzcash.png" alt="EasyPaisa">
-            </div>
           </div>
         </div>
 
@@ -31,13 +24,12 @@
         </div>
 
         <!-- Useful Links -->
-        <div class="col-md-4">
-          <h4 class="footer-title">Useful links</h4>
-          <ul class="footer-links">
-            <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
-            <li><router-link to="/refund-policy">Refund & Return Policy</router-link></li>
-            <li><router-link to="/terms-of-use">Terms of use</router-link></li>
-          </ul>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h4 class="footer-title">Payment methods</h4>
+          <div class="payment-methods">
+              <img src="@/assets/img/easypaisa.png" alt="EasyPaisa">
+              <img src="@/assets/img/jazzcash.png" alt="EasyPaisa">
+            </div>
         </div>
       </div>
 

@@ -72,24 +72,13 @@
                   <p>123 Drone Street, Lahore, Pakistan</p>
                 </div>
               </div>
-
-              <div class="contact-item d-flex mb-3">
-                <div class="icon mr-3">
-                  <i class="fas fa-phone-alt fa-fw text-primary"></i>
-                </div>
-                <div class="text">
-                  <h5 class="mb-1">Phone Number</h5>
-                  <p>+92 320 9972624</p>
-                </div>
-              </div>
-
               <div class="contact-item d-flex mb-3">
                 <div class="icon mr-3">
                   <i class="fas fa-envelope fa-fw text-primary"></i>
                 </div>
                 <div class="text">
                   <h5 class="mb-1">Email Address</h5>
-                  <p>inspireinnosmc@gmail.com</p>
+                  <p>gizmoshopper@gmail.com</p>
                 </div>
               </div>
 
@@ -102,37 +91,6 @@
                   <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM</p>
                 </div>
               </div>
-            </div>
-
-            <div class="social-media text-center mb-4">
-              <h4 class="mb-3">Follow Us</h4>
-              <div class="social-icons">
-                <a href="#" class="social-icon">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="social-icon">
-                  <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="social-icon">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="social-icon">
-                  <i class="fab fa-youtube"></i>
-                </a>
-                <a href="#" class="social-icon">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="map-container rounded overflow-hidden shadow-sm">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d435518.6817841632!2d74.05419809659455!3d31.483220877415166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc23abe6ccc7e2462!2sLahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1617292750920!5m2!1sen!2sus"
-                width="100%"
-                height="300"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"></iframe>
             </div>
           </div>
         </div>

@@ -41,13 +41,6 @@
           <!-- Header Icons -->
           <div class="col-md-3">
             <div class="d-flex justify-content-end header-icons">
-              <a href="#" class="d-flex flex-column align-items-center">
-                <i class="fas fa-headset"></i>
-                <div class="small">
-                  <div>Support 24/7</div>
-                  <div>+92 320 9972624</div>
-                </div>
-              </a>
               <router-link to="/cart" class="d-flex flex-column align-items-center ml-4">
                 <i class="fas fa-shopping-cart"></i>
                 <div class="small">
