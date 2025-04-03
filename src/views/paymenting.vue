@@ -77,7 +77,7 @@
         <div class="order-item" v-for="item in cartItems" :key="item.id">
           <img :src="item.image" :alt="item.name" class="cart-item-image">
           <div class="product-col">
-            <div class="product-name">Battery For DJI Mavic Pro Intelligent Replacement Internal FL-BT1</div>
+            <div class="product-name">{{ item.name }}</div>
             <div class="product-quantity">× {{ item.quantity }}</div>
             <div class="subtotal-col">Rs{{ formatPrice(item.currentPrice * item.quantity) }}</div>
           </div>
@@ -424,7 +424,8 @@ textarea {
   width: 80px;
   object-fit: contain;
 }
-.pay-success{
+
+.pay-success {
   display: flex;
   flex-direction: column;
   align-items: center;
