@@ -1,165 +1,433 @@
 <template>
-  <div class="loader">
-    <div class="truckWrapper">
-      <div class="truckBody">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 198 93" class="trucksvg">
-          <path stroke-width="3" stroke="#282828" fill="#F83D3D"
-            d="M135 22.5H177.264C178.295 22.5 179.22 23.133 179.594 24.0939L192.33 56.8443C192.442 57.1332 192.5 57.4404 192.5 57.7504V89C192.5 90.3807 191.381 91.5 190 91.5H135C133.619 91.5 132.5 90.3807 132.5 89V25C132.5 23.6193 133.619 22.5 135 22.5Z">
-          </path>
-          <path stroke-width="3" stroke="#282828" fill="#7D7C7C"
-            d="M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z">
-          </path>
-          <path stroke-width="2" stroke="#282828" fill="#282828"
-            d="M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z">
-          </path>
-          <rect stroke-width="2" stroke="#282828" fill="#FFFCAB" rx="1" height="7" width="5" y="63" x="187"></rect>
-          <rect stroke-width="2" stroke="#282828" fill="#282828" rx="1" height="11" width="4" y="81" x="193"></rect>
-          <rect stroke-width="3" stroke="#282828" fill="#DFDFDF" rx="2.5" height="90" width="121" y="1.5" x="6.5">
-          </rect>
-          <rect stroke-width="2" stroke="#282828" fill="#DFDFDF" rx="2" height="4" width="6" y="84" x="1"></rect>
-        </svg>
-      </div>
-      <div class="truckTires">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" class="tiresvg">
-          <circle stroke-width="3" stroke="#282828" fill="#282828" r="13.5" cy="15" cx="15"></circle>
-          <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" class="tiresvg">
-          <circle stroke-width="3" stroke="#282828" fill="#282828" r="13.5" cy="15" cx="15"></circle>
-          <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
-        </svg>
-      </div>
-      <div class="road"></div>
+  <div class="checkout-container">
+    <div class="billing-section" v-if="!isSuccess">
+      <h2>Billing details</h2>
 
-      <svg xml:space="preserve" viewBox="0 0 453.459 453.459" xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="#000000" class="lampPost">
-        <path d="M252.882,0c-37.781,0-68.686,29.953-70.245,67.358h-6.917v8.954c-26.109,2.163-45.463,10.011-45.463,19.366h9.993
-c-1.65,5.146-2.507,10.54-2.507,16.017c0,28.956,23.558,52.514,52.514,52.514c28.956,0,52.514-23.558,52.514-52.514
-c0-5.478-0.856-10.872-2.506-16.017h9.992c0-9.354-19.352-17.204-45.463-19.366v-8.954h-6.149C200.189,38.779,223.924,16,252.882,16
-c29.952,0,54.32,24.368,54.32,54.32c0,28.774-11.078,37.009-25.105,47.437c-17.444,12.968-37.216,27.667-37.216,78.884v113.914
-h-0.797c-5.068,0-9.174,4.108-9.174,9.177c0,2.844,1.293,5.383,3.321,7.066c-3.432,27.933-26.851,95.744-8.226,115.459v11.202h45.75
-v-11.202c18.625-19.715-4.794-87.527-8.227-115.459c2.029-1.683,3.322-4.223,3.322-7.066c0-5.068-4.107-9.177-9.176-9.177h-0.795
-V196.641c0-43.174,14.942-54.283,30.762-66.043c14.793-10.997,31.559-23.461,31.559-60.277C323.202,31.545,291.656,0,252.882,0z
-M232.77,111.694c0,23.442-19.071,42.514-42.514,42.514c-23.442,0-42.514-19.072-42.514-42.514c0-5.531,1.078-10.957,3.141-16.017
-h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"></path>
-      </svg>
-    </div>
-    <div class="loading-text">
-      Payment in progress, please wait
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First name <span class="required">*</span></label>
+          <input type="text" id="firstName" v-model="billingDetails.firstName" placeholder="23" />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last name <span class="required">*</span></label>
+          <input type="text" id="lastName" v-model="billingDetails.lastName" placeholder="1234" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country / Region <span class="required">*</span></label>
+        <select id="country" v-model="billingDetails.country">
+          <option value="Pakistan">Pakistan</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="streetAddress">Street address <span class="required">*</span></label>
+        <input type="text" id="streetAddress" v-model="billingDetails.streetAddress" placeholder="123" />
+        <input type="text" v-model="billingDetails.streetAddressLine2" placeholder="123" />
+      </div>
+
+      <div class="form-group">
+        <label for="city">Town / City <span class="required">*</span></label>
+        <input type="text" id="city" v-model="billingDetails.city" placeholder="123" />
+      </div>
+
+      <div class="form-group">
+        <label for="state">State / County <span class="required">*</span></label>
+        <select id="state" v-model="billingDetails.state">
+          <option value="Azad Kashmir">Azad Kashmir</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="zip">Postcode / ZIP <span class="required">*</span></label>
+        <input type="text" id="zip" v-model="billingDetails.zip" placeholder="12200" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" v-model="billingDetails.phone" placeholder="1234" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address <span class="required">*</span></label>
+        <input type="email" id="email" v-model="billingDetails.email" placeholder="1234@qq.com" />
+      </div>
+
+      <h2>Additional information</h2>
+
+      <div class="form-group">
+        <label for="notes">Order notes (optional)</label>
+        <textarea id="notes" v-model="billingDetails.notes"
+          placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+      </div>
     </div>
 
+    <div class="order-summary" v-if="!isSuccess">
+      <h2>Your order</h2>
+
+      <div class="order-table">
+        <div class="order-header">
+          <div class="product-col">Product</div>
+          <div class="subtotal-col">Subtotal</div>
+        </div>
+
+        <div class="order-item" v-for="item in cartItems" :key="item.id">
+          <img :src="item.image" :alt="item.name" class="cart-item-image">
+          <div class="product-col">
+            <div class="product-name">Battery For DJI Mavic Pro Intelligent Replacement Internal FL-BT1</div>
+            <div class="product-quantity">× {{ item.quantity }}</div>
+            <div class="subtotal-col">Rs{{ formatPrice(item.currentPrice * item.quantity) }}</div>
+          </div>
+        </div>
+
+        <div class="order-subtotal">
+          <div>Subtotal</div>
+          <div>Rs {{ formatPrice(cartTotal) }}</div>
+        </div>
+
+        <div class="order-total">
+          <div>Total</div>
+          <div>Rs {{ formatPrice(cartTotal) }}</div>
+        </div>
+      </div>
+
+      <div class="payment-methods">
+        <div class="payment-method">
+          <input type="radio" id="jazzcash-card" name="payment" value="jazzcash-card" />
+          <label for="jazzcash-card">
+            <img src="../assets/img/card.png" alt="JazzCash Logo" class="payment-logo" />
+            JazzCash Debit/Credit Card
+          </label>
+        </div>
+
+        <div class="payment-method selected">
+          <input type="radio" id="jazzcash-mobile" name="payment" value="jazzcash-mobile" checked />
+          <label for="jazzcash-mobile" class="payment-description">
+            <img src="../assets/img/mobile.png" alt="JazzCash Mobile Logo" class="payment-logo" />
+            JazzCash Mobile Account
+            <p>JazzCash Mobile Account can be registered on any Jazz or Warid number</p>
+            <p>Biometric-verified Jazz and Warid customers can self-register their Mobile Account simply by dialing
+              <strong>*786#</strong>.
+            </p>
+            <p>Enter the confirmation code within <strong>30</strong> seconds to make a successful payment!</p>
+            <p>You're almost done!</p>
+            <p>To change or edit your order, go back. No changes will be allowed once you click "PLACE ORDER".</p>
+          </label>
+        </div>
+
+        <div class="payment-method">
+          <input type="radio" id="easypaisa" name="payment" value="easypaisa" />
+          <label for="easypaisa">
+            <img src="../assets/img/easy-pay-logo.png" alt="Easypaisa Logo" class="payment-logo" />
+            Pay via Easypaisa
+          </label>
+        </div>
+      </div>
+      <button class="place-order-btn" @click="onPlaceOrder">Place order</button>
+    </div>
+    <div v-if="isSuccess" class="pay-success">
+      <img src="../assets/success.jpg" alt="" style="width: 40px;height: 40px;">
+      <h3>Payment Successful</h3>
+      <p>Your order has been placed successfully.</p>
+      <button class="back-btn" @click="onBackHome">Back to Home</button>
+    </div>
   </div>
-
 </template>
 
-<style scoped>
-.loader {
-  width: 100vw;
-  height:100vh;
+<script>
+import { mapGetters, mapMutations } from 'vuex'
+export default {
+  data() {
+    return {
+      billingDetails: {
+        firstName: '',
+        lastName: '',
+        country: 'Pakistan',
+        streetAddress: '',
+        streetAddressLine2: '',
+        city: '',
+        state: 'Azad Kashmir',
+        zip: '',
+        phone: '',
+        email: '',
+        notes: ''
+      },
+      isSuccess: false,
+    };
+  },
+  computed: {
+    ...mapGetters(['cartItems', 'cartTotal'])
+  },
+  methods: {
+    formatPrice(price) {
+      return price?.toLocaleString();
+    },
+    onPlaceOrder() {
+      this.isSuccess = true;
+      this.billingDetails = {
+        firstName: '',
+        lastName: '',
+        country: 'Pakistan',
+        streetAddress: '',
+        streetAddressLine2: '',
+        city: '',
+        state: 'Azad Kashmir',
+        zip: '',
+        phone: '',
+        email: '',
+        notes: ''
+      };
+    },
+    onBackHome() {
+      this.$router.push('/');
+    }
+  }
+};
+</script>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #1a202c;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.billing-section {
+  flex: 1;
+  min-width: 500px;
+}
+
+.order-summary {
+  flex: 0 0 400px;
+  background-color: #f1f1f1;
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.form-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.required {
+  color: #e53e3e;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 30px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.order-table {
+  margin-bottom: 20px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+}
+
+.product-col {
+  flex: 2;
+}
+
+.subtotal-col {
+  flex: 1;
+  text-align: right;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
   gap: 10px;
 }
-.loading-text{
-  color: #282828;
+
+.product-name {
+  margin-bottom: 5px;
+  font-size: 14px;
 }
-.truckWrapper {
-  width: 200px;
-  height: 100px;
+
+.product-quantity {
+  color: #666;
+  font-size: 14px;
+}
+
+.order-subtotal,
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-total {
+  font-weight: 700;
+  font-size: 18px;
+  border-bottom: none;
+}
+
+.payment-methods {
+  margin-bottom: 30px;
+}
+
+.payment-method {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-start;
+}
+
+.payment-method.selected {
+  border-color: #3182ce;
+}
+
+.payment-method input[type="radio"] {
+  width: auto;
+  margin-right: 10px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.payment-method label {
+  cursor: pointer;
+}
+
+.payment-logo {
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.payment-description {
+  /* margin-top: 15px; */
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.payment-description p {
+  margin-bottom: 8px;
+}
+
+.payment-description p:last-child {
+  margin-bottom: 0;
+}
+
+.place-order-btn {
+  width: 100%;
+  background-color: #4338ca;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.place-order-btn:hover {
+  background-color: #3730a3;
+}
+
+@media (max-width: 992px) {
+  .checkout-container {
+    flex-direction: column;
+  }
+
+  .billing-section,
+  .order-summary {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+.cart-item-image {
+  width: 80px;
+  object-fit: contain;
+}
+.pay-success{
   display: flex;
   flex-direction: column;
-  position: relative;
   align-items: center;
-  justify-content: flex-end;
-  overflow-x: hidden;
+  justify-content: center;
 }
-/* truck upper body */
-.truckBody {
-  width: 130px;
-  height: fit-content;
-  margin-bottom: 6px;
-  animation: motion 1s linear infinite;
-}
-/* truck suspension animation*/
-@keyframes motion {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(3px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-/* truck's tires */
-.truckTires {
-  width: 130px;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 10px 0px 15px;
-  position: absolute;
-  bottom: 0;
-}
-.truckTires svg {
-  width: 24px;
-}
-
-.road {
-  width: 100%;
-  height: 1.5px;
-  background-color: #282828;
-  position: relative;
-  bottom: 0;
-  align-self: flex-end;
-  border-radius: 3px;
-}
-.road::before {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 100%;
-  background-color: #282828;
-  right: -50%;
-  border-radius: 3px;
-  animation: roadAnimation 1.4s linear infinite;
-  border-left: 10px solid white;
-}
-.road::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 100%;
-  background-color: #282828;
-  right: -65%;
-  border-radius: 3px;
-  animation: roadAnimation 1.4s linear infinite;
-  border-left: 4px solid white;
-}
-
-.lampPost {
-  position: absolute;
-  bottom: 0;
-  right: -90%;
-  height: 90px;
-  animation: roadAnimation 1.4s linear infinite;
-}
-
-@keyframes roadAnimation {
-  0% {
-    transform: translateX(0px);
-  }
-  100% {
-    transform: translateX(-350px);
-  }
-}
-
 </style>
